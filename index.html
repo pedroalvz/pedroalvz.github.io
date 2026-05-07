@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedro - Developer Portfolio</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background: #0f1117;
+      color: #e0e0e0;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid #1e2130;
+    }
+    .nav-logo { font-size: 16px; font-weight: 500; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 14px; color: #888; }
+    .nav-links a:hover { color: #e0e0e0; }
+
+    /* HERO */
+    .hero {
+      padding: 80px 40px 64px;
+      border-bottom: 1px solid #1e2130;
+      max-width: 860px;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 8px;
+      background: #0c2040;
+      color: #5fa8e8;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .hero h1 span { color: #378ADD; }
+    .hero p {
+      font-size: 16px;
+      color: #888;
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 11px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      background: #185FA5;
+      color: #e6f1fb;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: #1a6db8; }
+    .btn-secondary {
+      padding: 11px 24px;
+      font-size: 14px;
+      background: transparent;
+      color: #e0e0e0;
+      border: 1px solid #2a2d3a;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { background: #1a1d27; }
+
+    /* SECTIONS */
+    .section {
+      padding: 48px 40px;
+      border-bottom: 1px solid #1e2130;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 24px;
+    }
+
+    /* EXPERIENCE */
+    .experience-list { display: flex; flex-direction: column; gap: 16px; }
+    .exp-card {
+      background: #13161f;
+      border: 1px solid #1e2130;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+      transition: border-color 0.15s;
+    }
+    .exp-card:hover { border-color: #2a3050; }
+    .exp-card.featured { border-color: #1a3050; }
+    .exp-left { display: flex; flex-direction: column; gap: 6px; }
+    .exp-role { font-size: 15px; font-weight: 500; color: #e0e0e0; }
+    .exp-place { font-size: 13px; color: #888; }
+    .exp-place a { color: #378ADD; }
+    .exp-place a:hover { color: #5fa8e8; }
+    .exp-desc { font-size: 13px; color: #666; line-height: 1.6; max-width: 480px; margin-top: 4px; }
+    .exp-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    .exp-badge {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .badge-blue   { background: #0c2040; color: #5fa8e8; }
+    .badge-teal   { background: #042820; color: #3dcfa0; }
+    .badge-orange { background: #2a1800; color: #e8a840; }
+    .exp-date {
+      font-size: 12px;
+      color: #555;
+      white-space: nowrap;
+      padding: 4px 10px;
+      border: 1px solid #1e2130;
+      border-radius: 6px;
+      height: fit-content;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .project-card {
+      background: #13161f;
+      border: 1px solid #1e2130;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.15s;
+    }
+    .project-card:hover { border-color: #2a3050; }
+    .project-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+    .project-card h3 { font-size: 15px; font-weight: 500; }
+    .project-card p { font-size: 13px; color: #888; line-height: 1.6; flex: 1; }
+    .project-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tag { font-size: 11px; padding: 3px 8px; border-radius: 6px; }
+    .tag-blue   { background: #0c2040; color: #5fa8e8; }
+    .tag-teal   { background: #042820; color: #3dcfa0; }
+    .tag-purple { background: #1a1050; color: #9f8ff0; }
+    .project-link { font-size: 13px; color: #378ADD; margin-top: 4px; }
+    .project-link:hover { color: #5fa8e8; }
+
+    /* SKILLS */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+      font-size: 13px;
+      padding: 7px 16px;
+      border-radius: 8px;
+      border: 1px solid #1e2130;
+      color: #888;
+      background: #13161f;
+    }
+
+    /* CONTACT */
+    .contact-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #888;
+      padding: 9px 18px;
+      border: 1px solid #1e2130;
+      border-radius: 8px;
+      background: #13161f;
+    }
+    .contact-link:hover { color: #e0e0e0; border-color: #2a2d3a; }
+    .contact-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+    /* FOOTER */
+    footer {
+      padding: 24px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p { font-size: 12px; color: #444; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .hero { padding: 48px 20px 40px; }
+      .hero h1 { font-size: 32px; }
+      .section { padding: 36px 20px; }
+      .exp-card { flex-direction: column; }
+      footer { padding: 20px; flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">Pedro Alves Cavalari</div>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-tag">Open to part-time &amp; freelance work</div>
+    <h1>Web dev &amp;<br><span>ML engineer</span><br>in the making.</h1>
+    <p>Second-year Computer Science student with real-world IT and platform experience, building products at the intersection of web development and machine learning.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="https://github.com/pedroalvz" target="_blank">View GitHub</a>
+      <a class="btn-secondary" href="#">Download CV</a>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section" id="experience">
+    <div class="section-label">Experience</div>
+    <div class="experience-list">
+
+      <!-- ResellVault -->
+      <div class="exp-card featured">
+        <div class="exp-left">
+          <div class="exp-role">Security Manager</div>
+          <div class="exp-place">
+            <a href="https://resellvault.co.uk" target="_blank">ResellVault</a>
+            · Freelance
+          </div>
+          <div class="exp-desc">
+            Provided technical support, moderation and community management for a SaaS reselling platform with a 25,000+ member community.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-badge badge-orange">Freelance</span>
+            <span class="exp-badge badge-blue">Technical support</span>
+            <span class="exp-badge badge-blue">Community management</span>
+            <span class="exp-badge badge-blue">SaaS</span>
+          </div>
+        </div>
+        <div class="exp-date">Feb 2025 — May 2025</div>
+      </div>
+
+      <!-- IT Technician -->
+      <div class="exp-card">
+        <div class="exp-left">
+          <div class="exp-role">IT Technician</div>
+          <div class="exp-place">School · Part-time</div>
+          <div class="exp-tags">
+            <span class="exp-badge badge-teal">Part-time</span>
+            <span class="exp-badge badge-blue">IT support</span>
+          </div>
+        </div>
+        <div class="exp-date">Jul 2024 — Oct 2024</div>
+      </div>
+
+      <!-- IT Placement -->
+      <div class="exp-card">
+        <div class="exp-left">
+          <div class="exp-role">IT Student Placement</div>
+          <div class="exp-place">School · Work experience</div>
+          <div class="exp-tags">
+            <span class="exp-badge badge-teal">Placement</span>
+            <span class="exp-badge badge-blue">IT support</span>
+          </div>
+        </div>
+        <div class="exp-date">Apr 2024 — Jul 2024</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section" id="projects">
+    <div class="section-label">Projects</div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-icon" style="background:#042820;">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="7" stroke="#3dcfa0" stroke-width="1.3"/>
+            <path d="M6 9h6M9 6v6" stroke="#3dcfa0" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>AI chat interface</h3>
+        <p>A working chat app powered by Claude's API with full multi-turn conversation memory.</p>
+        <div class="project-tags">
+          <span class="tag tag-teal">JavaScript</span>
+          <span class="tag tag-teal">API</span>
+        </div>
+        <a class="project-link" href="https://github.com/pedroalvz" target="_blank">GitHub →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon" style="background:#1a1050;">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <rect x="1" y="10" width="3" height="6" rx="1" fill="#9f8ff0"/>
+            <rect x="6" y="7" width="3" height="9" rx="1" fill="#9f8ff0"/>
+            <rect x="11" y="4" width="3" height="12" rx="1" fill="#9f8ff0"/>
+            <rect x="16" y="1" width="1" height="15" rx="0.5" fill="#9f8ff0"/>
+          </svg>
+        </div>
+        <h3>Sorting visualiser</h3>
+        <p>Animated bubble sort and selection sort with step-by-step explanations and live stats.</p>
+        <div class="project-tags">
+          <span class="tag tag-purple">JavaScript</span>
+          <span class="tag tag-purple">Algorithms</span>
+        </div>
+        <a class="project-link" href="https://pedroalvz.github.io/sorting-visualiser" target="_blank">Live demo →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section" id="skills">
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <span class="skill-tag">HTML &amp; CSS</span>
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">Machine learning</span>
+      <span class="skill-tag">REST APIs</span>
+      <span class="skill-tag">Computer architecture</span>
+      <span class="skill-tag">Git &amp; GitHub</span>
+      <span class="skill-tag">IT support</span>
+      <span class="skill-tag">Community management</span>
+      <span class="skill-tag">Research methods</span>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section" id="contact">
+    <div class="section-label">Contact</div>
+    <div class="contact-row">
+      <a class="contact-link" href="https://github.com/pedroalvz" target="_blank">
+        <div class="contact-dot" style="background:#e0e0e0;"></div>
+        github.com/pedroalvz
+      </a>
+      <!-- Replace with your actual email -->
+      <a class="contact-link" href="mailto:your@email.com">
+        <div class="contact-dot" style="background:#378ADD;"></div>
+        phenriquecavalari@gmail.com
+      </a>
+      <span style="font-size:13px;color:#555;">Based in UK · Open to remote &amp; local work</span>
+    </div>
+  </div>
+
+  <footer>
+    <p>Pedro · CS student · 2026</p>
+    <p>Built with HTML &amp; CSS</p>
+  </footer>
+
+</body>
+</html>

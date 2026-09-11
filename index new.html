@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedro Alves Cavalari — Developer Portfolio</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0b0d12;
+      color: #d8dce8;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      border-bottom: 1px solid #181c28;
+      position: sticky;
+      top: 0;
+      background: #0b0d12;
+      z-index: 10;
+    }
+    .nav-logo { font-size: 14px; font-weight: 600; letter-spacing: 0.02em; color: #d8dce8; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 13px; color: #555; transition: color 0.15s; }
+    .nav-links a:hover { color: #d8dce8; }
+
+    /* HERO */
+    .hero {
+      padding: 96px 48px 80px;
+      border-bottom: 1px solid #181c28;
+      max-width: 900px;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: #0d1f35;
+      color: #4d9de0;
+      margin-bottom: 28px;
+      border: 1px solid #1a3358;
+    }
+    .hero-tag-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #4d9de0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 600;
+      line-height: 1.08;
+      margin-bottom: 22px;
+      letter-spacing: -1.5px;
+      color: #eef0f6;
+    }
+    .hero h1 .accent { color: #2e7dd4; }
+    .hero p {
+      font-size: 16px;
+      color: #666;
+      max-width: 500px;
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 11px 24px;
+      font-size: 13px;
+      font-weight: 500;
+      background: #1a5fa5;
+      color: #e8f2fb;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: #2070bb; }
+    .btn-secondary {
+      padding: 11px 24px;
+      font-size: 13px;
+      background: transparent;
+      color: #999;
+      border: 1px solid #202333;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-secondary:hover { color: #d8dce8; border-color: #2e334a; }
+
+    /* SECTIONS */
+    .section {
+      padding: 56px 48px;
+      border-bottom: 1px solid #181c28;
+    }
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 28px;
+    }
+
+    /* EXPERIENCE */
+    .experience-list { display: flex; flex-direction: column; gap: 12px; }
+    .exp-card {
+      background: #0f1219;
+      border: 1px solid #181c28;
+      border-radius: 12px;
+      padding: 22px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+      transition: border-color 0.15s;
+    }
+    .exp-card:hover { border-color: #252a3d; }
+    .exp-card.featured { border-color: #162540; background: #0d1520; }
+    .exp-left { display: flex; flex-direction: column; gap: 5px; flex: 1; }
+    .exp-role { font-size: 14px; font-weight: 600; color: #eef0f6; }
+    .exp-place { font-size: 13px; color: #555; }
+    .exp-place a { color: #2e7dd4; }
+    .exp-place a:hover { color: #4d9de0; }
+    .exp-desc { font-size: 13px; color: #555; line-height: 1.65; max-width: 500px; margin-top: 6px; }
+    .exp-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+    .exp-badge {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+    .badge-blue   { background: #0c1e38; color: #4d9de0; }
+    .badge-teal   { background: #041e16; color: #32c48a; }
+    .badge-orange { background: #201400; color: #d4923a; }
+    .badge-purple { background: #120e30; color: #9080e8; }
+    .exp-date {
+      font-size: 11px;
+      color: #444;
+      white-space: nowrap;
+      padding: 4px 10px;
+      border: 1px solid #181c28;
+      border-radius: 6px;
+      height: fit-content;
+      flex-shrink: 0;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .project-card {
+      background: #0f1219;
+      border: 1px solid #181c28;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.15s;
+    }
+    .project-card:hover { border-color: #252a3d; }
+    .project-card.featured-project { border-color: #162540; background: #0d1520; }
+    .project-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2px;
+    }
+    .project-card h3 { font-size: 14px; font-weight: 600; color: #eef0f6; }
+    .project-card p { font-size: 13px; color: #555; line-height: 1.65; flex: 1; }
+    .project-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tag { font-size: 11px; padding: 3px 9px; border-radius: 6px; }
+    .tag-blue   { background: #0c1e38; color: #4d9de0; }
+    .tag-teal   { background: #041e16; color: #32c48a; }
+    .tag-purple { background: #120e30; color: #9080e8; }
+    .tag-orange { background: #201400; color: #d4923a; }
+    .project-link { font-size: 13px; color: #2e7dd4; margin-top: 4px; transition: color 0.15s; }
+    .project-link:hover { color: #4d9de0; }
+
+    /* SKILLS */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 7px;
+      border: 1px solid #181c28;
+      color: #666;
+      background: #0f1219;
+      transition: all 0.15s;
+    }
+    .skill-tag:hover { color: #d8dce8; border-color: #252a3d; }
+
+    /* CONTACT */
+    .contact-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #666;
+      padding: 9px 18px;
+      border: 1px solid #181c28;
+      border-radius: 8px;
+      background: #0f1219;
+      transition: all 0.15s;
+    }
+    .contact-link:hover { color: #d8dce8; border-color: #252a3d; }
+    .contact-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+    /* FOOTER */
+    footer {
+      padding: 28px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p { font-size: 12px; color: #333; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .nav-links { gap: 20px; }
+      .hero { padding: 56px 20px 44px; }
+      .hero h1 { font-size: 34px; letter-spacing: -0.5px; }
+      .section { padding: 40px 20px; }
+      .exp-card { flex-direction: column; }
+      footer { padding: 20px; flex-direction: column; gap: 6px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">Pedro A. Cavalari</div>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      Open to part-time &amp; freelance work
+    </div>
+    <h1>Building real things<br>with <span class="accent">code &amp; AI.</span></h1>
+    <p>Final-year Computer Science student at Bucks New University. Co-founder of Cortex Agency, a live SaaS booking platform. Two years of real-world IT experience.</p>
+
+    <div class="hero-btns">
+      <a class="btn-primary" href="https://github.com/pedroalvz" target="_blank">View GitHub</a>
+      <a class="btn-secondary" href="mailto:phenriquecavalari@gmail.com">Get in touch</a>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section" id="experience">
+    <div class="section-label">Experience</div>
+    <div class="experience-list">
+
+      <!-- Cortex -->
+      <div class="exp-card featured">
+        <div class="exp-left">
+          <div class="exp-role">Co-Founder &amp; Full-Stack Developer</div>
+          <div class="exp-place">
+            <a href="https://cortexagency.co.uk" target="_blank">Cortex Agency Ltd</a>
+            &nbsp;· Startup
+          </div>
+          <div class="exp-desc">
+            Built a live SaaS booking platform for salons, barbers, and clinics from scratch. Handles bookings, CRM, client calendar, SMS reminders, and payments — with real paying clients.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-badge badge-blue">JavaScript</span>
+            <span class="exp-badge badge-blue">Supabase</span>
+            <span class="exp-badge badge-blue">Twilio</span>
+            <span class="exp-badge badge-teal">Full-stack</span>
+            <span class="exp-badge badge-orange">Co-founder</span>
+          </div>
+        </div>
+        <div class="exp-date">Jan 2026 — Present</div>
+      </div>
+
+      <!-- ResellVault -->
+      <div class="exp-card">
+        <div class="exp-left">
+          <div class="exp-role">Security Manager</div>
+          <div class="exp-place">
+            <a href="https://resellvault.co.uk" target="_blank">ResellVault</a>
+            &nbsp;· Freelance
+          </div>
+          <div class="exp-desc">
+            Managed security, moderation, and access control for a SaaS reselling platform with 20,000+ members.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-badge badge-orange">Freelance</span>
+            <span class="exp-badge badge-blue">Security</span>
+            <span class="exp-badge badge-blue">Community management</span>
+          </div>
+        </div>
+        <div class="exp-date">Feb 2025 — May 2025</div>
+      </div>
+
+      <!-- IT Technician -->
+      <div class="exp-card">
+        <div class="exp-left">
+          <div class="exp-role">IT Technician</div>
+          <div class="exp-place">Kennet School &nbsp;· Part-time</div>
+          <div class="exp-desc">
+            First-line IT support for staff and students. Hardware, software, and network troubleshooting. Offered a permanent role after placement.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-badge badge-teal">IT Support</span>
+            <span class="exp-badge badge-teal">Networking</span>
+            <span class="exp-badge badge-teal">Hardware</span>
+          </div>
+        </div>
+        <div class="exp-date">Jul 2024 — Oct 2024</div>
+      </div>
+
+      <!-- IT Placement -->
+      <div class="exp-card">
+        <div class="exp-left">
+          <div class="exp-role">IT Student Placement</div>
+          <div class="exp-place">Kennet School &nbsp;· Work experience</div>
+          <div class="exp-desc">
+            45-day placement as part of T-Level in Digital Infrastructure. Supported IT operations and user management day-to-day.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-badge badge-teal">Placement</span>
+            <span class="exp-badge badge-teal">IT Support</span>
+          </div>
+        </div>
+        <div class="exp-date">Apr 2024 — Jul 2024</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section" id="projects">
+    <div class="section-label">Projects</div>
+    <div class="projects-grid">
+
+      <div class="project-card featured-project">
+        <div class="project-icon" style="background:#0d1520;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect x="2" y="3" width="16" height="12" rx="2.5" stroke="#2e7dd4" stroke-width="1.3"/>
+            <path d="M6 8h3M6 11h5M13 8h1" stroke="#2e7dd4" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M7 17h6" stroke="#2e7dd4" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M10 15v2" stroke="#2e7dd4" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Cortex Agency</h3>
+        <p>Full SaaS booking platform for salons and clinics. Built the dashboard, CRM, calendar, SMS reminders, and backend — live with real clients.</p>
+        <div class="project-tags">
+          <span class="tag tag-blue">JavaScript</span>
+          <span class="tag tag-blue">Supabase</span>
+          <span class="tag tag-blue">Twilio</span>
+          <span class="tag tag-teal">Live product</span>
+        </div>
+        <a class="project-link" href="https://cortexagency.co.uk" target="_blank">Visit site →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon" style="background:#120e30;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect x="1" y="12" width="3" height="6" rx="1" fill="#9080e8"/>
+            <rect x="6" y="9" width="3" height="9" rx="1" fill="#9080e8"/>
+            <rect x="11" y="5" width="3" height="13" rx="1" fill="#9080e8"/>
+            <rect x="16" y="2" width="3" height="16" rx="1" fill="#9080e8"/>
+          </svg>
+        </div>
+        <h3>Sorting Visualiser</h3>
+        <p>Animated bubble sort and selection sort with live stats and step-by-step explanations.</p>
+        <div class="project-tags">
+          <span class="tag tag-purple">JavaScript</span>
+          <span class="tag tag-purple">Algorithms</span>
+        </div>
+        <a class="project-link" href="https://pedroalvz.github.io/sorting-visualiser" target="_blank">Live demo →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section" id="skills">
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">HTML &amp; CSS</span>
+      <span class="skill-tag">SQL</span>
+      <span class="skill-tag">Node.js</span>
+      <span class="skill-tag">Supabase</span>
+      <span class="skill-tag">REST APIs</span>
+      <span class="skill-tag">Twilio</span>
+      <span class="skill-tag">Git &amp; GitHub</span>
+      <span class="skill-tag">AI-assisted development</span>
+      <span class="skill-tag">Prompt engineering</span>
+      <span class="skill-tag">IT support</span>
+      <span class="skill-tag">Networking</span>
+      <span class="skill-tag">Machine learning</span>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section" id="contact">
+    <div class="section-label">Contact</div>
+    <div class="contact-row">
+      <a class="contact-link" href="https://github.com/pedroalvz" target="_blank">
+        <div class="contact-dot" style="background:#d8dce8;"></div>
+        github.com/pedroalvz
+      </a>
+      <a class="contact-link" href="mailto:phenriquecavalari@gmail.com">
+        <div class="contact-dot" style="background:#2e7dd4;"></div>
+        phenriquecavalari@gmail.com
+      </a>
+      <a class="contact-link" href="https://cortexagency.co.uk" target="_blank">
+        <div class="contact-dot" style="background:#32c48a;"></div>
+        cortexagency.co.uk
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>Pedro Alves Cavalari · 2026</p>
+    <p>Built with HTML &amp; CSS</p>
+  </footer>
+
+</body>
+</html>

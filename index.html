@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedro Alves Cavalari · Full-Stack Developer</title>
+  <meta name="description" content="Final-year Computer Science student at Bucks New University. Built Richly, a live personal finance app, and co-founded Cortex Agency. Open to graduate and junior developer roles." />
+  <meta name="theme-color" content="#0b0d12" />
+
+  <!-- How the link looks when it is pasted into LinkedIn, WhatsApp or an application form -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pedroalvz.github.io/" />
+  <meta property="og:title" content="Pedro Alves Cavalari · Full-Stack Developer" />
+  <meta property="og:description" content="Final-year Computer Science student. Built Richly, a live personal finance app, and co-founded Cortex Agency." />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a5fa5'/%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-size='18' font-weight='600' text-anchor='middle' fill='%23e8f2fb'%3EP%3C/text%3E%3C/svg%3E" />
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0b0d12;
+      color: #d8dce8;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    a:focus-visible { outline: 2px solid #4d9de0; outline-offset: 3px; border-radius: 4px; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      padding: 20px 48px;
+      border-bottom: 1px solid #181c28;
+      position: sticky;
+      top: 0;
+      background: #0b0d12;
+      z-index: 10;
+    }
+    .nav-logo { font-size: 14px; font-weight: 600; letter-spacing: 0.02em; color: #d8dce8; }
+    .nav-links { display: flex; gap: 32px; flex-wrap: wrap; }
+    .nav-links a { font-size: 13px; color: #9aa3b5; transition: color 0.15s; }
+    .nav-links a:hover { color: #d8dce8; }
+
+    /* HERO */
+    .hero {
+      padding: 96px 48px 80px;
+      border-bottom: 1px solid #181c28;
+      max-width: 900px;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: #0d1f35;
+      color: #4d9de0;
+      margin-bottom: 28px;
+      border: 1px solid #1a3358;
+    }
+    .hero-tag-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #4d9de0;
+      flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 600;
+      line-height: 1.08;
+      margin-bottom: 22px;
+      letter-spacing: -1.5px;
+      color: #eef0f6;
+    }
+    .hero h1 .accent { color: #3d8ee0; }
+    .hero p {
+      font-size: 16px;
+      color: #9aa3b5;
+      max-width: 580px;
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .hero p a { color: #d8dce8; border-bottom: 1px solid #2e334a; }
+    .hero p a:hover { border-color: #4d9de0; }
+    .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 11px 24px;
+      font-size: 13px;
+      font-weight: 500;
+      background: #1a5fa5;
+      color: #e8f2fb;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: #2070bb; }
+    .btn-secondary {
+      padding: 11px 24px;
+      font-size: 13px;
+      background: transparent;
+      color: #b4bccb;
+      border: 1px solid #262b3d;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-secondary:hover { color: #d8dce8; border-color: #3a4160; }
+
+    /* SECTIONS */
+    .section {
+      padding: 56px 48px;
+      border-bottom: 1px solid #181c28;
+      scroll-margin-top: 60px;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7f889b;
+      margin-bottom: 28px;
+    }
+
+    /* EXPERIENCE */
+    .experience-list { display: flex; flex-direction: column; gap: 12px; }
+    .exp-card {
+      background: #0f1219;
+      border: 1px solid #181c28;
+      border-radius: 12px;
+      padding: 22px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+      transition: border-color 0.15s;
+    }
+    .exp-card:hover { border-color: #252a3d; }
+    .exp-card.featured { border-color: #162540; background: #0d1520; }
+    .exp-left { display: flex; flex-direction: column; gap: 5px; flex: 1; }
+    .exp-role { font-size: 14px; font-weight: 600; color: #eef0f6; }
+    .exp-place { font-size: 13px; color: #9aa3b5; }
+    .exp-place a { color: #4d9de0; }
+    .exp-place a:hover { color: #7ab8ec; }
+    .exp-desc { font-size: 13px; color: #9aa3b5; line-height: 1.65; max-width: 580px; margin-top: 6px; }
+    .exp-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+    .exp-badge {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+    .badge-blue   { background: #0c1e38; color: #4d9de0; }
+    .badge-teal   { background: #041e16; color: #32c48a; }
+    .badge-orange { background: #201400; color: #d4923a; }
+    .badge-purple { background: #120e30; color: #9080e8; }
+    .exp-date {
+      font-size: 11px;
+      color: #7f889b;
+      white-space: nowrap;
+      padding: 4px 10px;
+      border: 1px solid #181c28;
+      border-radius: 6px;
+      height: fit-content;
+      flex-shrink: 0;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .project-card {
+      background: #0f1219;
+      border: 1px solid #181c28;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.15s;
+    }
+    .project-card:hover { border-color: #252a3d; }
+    .project-card.featured-project { border-color: #162540; background: #0d1520; }
+    .project-thumb {
+      display: block;
+      aspect-ratio: 1200 / 630;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #1c2740;
+      margin-bottom: 4px;
+    }
+    .project-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .project-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2px;
+    }
+    .project-card h3 { font-size: 14px; font-weight: 600; color: #eef0f6; }
+    .project-card p { font-size: 13px; color: #9aa3b5; line-height: 1.65; flex: 1; }
+    .project-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tag { font-size: 11px; padding: 3px 9px; border-radius: 6px; }
+    .tag-blue   { background: #0c1e38; color: #4d9de0; }
+    .tag-teal   { background: #041e16; color: #32c48a; }
+    .tag-purple { background: #120e30; color: #9080e8; }
+    .tag-orange { background: #201400; color: #d4923a; }
+    .project-link { font-size: 13px; color: #4d9de0; margin-top: 4px; transition: color 0.15s; }
+    .project-link:hover { color: #7ab8ec; }
+    .project-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .project-date {
+      font-size: 11px;
+      color: #7f889b;
+      white-space: nowrap;
+      padding: 4px 10px;
+      border: 1px solid #181c28;
+      border-radius: 6px;
+    }
+    .project-role { font-size: 12px; color: #7f889b; margin-top: -6px; }
+    .projects-also { font-size: 13px; color: #7f889b; line-height: 1.65; margin-top: 20px; }
+    .projects-also a { color: #9aa3b5; border-bottom: 1px solid #2e334a; }
+
+    /* SKILLS */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 7px;
+      border: 1px solid #1d2231;
+      color: #b4bccb;
+      background: #0f1219;
+      transition: all 0.15s;
+    }
+    .skill-tag:hover { color: #d8dce8; border-color: #2e334a; }
+    .skill-tag.learning { border-style: dashed; color: #9aa3b5; }
+    .skills-note { font-size: 13px; color: #9aa3b5; line-height: 1.65; max-width: 580px; margin-bottom: 28px; }
+    .skills-sub { font-size: 12px; color: #7f889b; margin-bottom: 12px; }
+    .skills-grid + .skills-sub { margin-top: 24px; }
+
+    /* CONTACT */
+    .contact-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #b4bccb;
+      padding: 9px 18px;
+      border: 1px solid #1d2231;
+      border-radius: 8px;
+      background: #0f1219;
+      transition: all 0.15s;
+    }
+    .contact-link:hover { color: #d8dce8; border-color: #2e334a; }
+    .contact-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+    /* FOOTER */
+    footer {
+      padding: 28px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p { font-size: 12px; color: #7f889b; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      nav { padding: 14px 20px; }
+      .nav-links { gap: 18px; }
+      .hero { padding: 56px 20px 44px; }
+      .hero h1 { font-size: 34px; letter-spacing: -0.5px; }
+      .section { padding: 40px 20px; scroll-margin-top: 84px; }
+      .exp-card { flex-direction: column; }
+      footer { padding: 20px; flex-direction: column; gap: 6px; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-tag-dot { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">Pedro Alves Cavalari</div>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      <span>Open to graduate &amp; junior developer roles from summer 2027</span>
+    </div>
+    <h1>My experience <span class="accent">&amp; projects.</span></h1>
+    <p>Final-year Computer Science student at Bucks New University. I made <a href="#projects">Richly</a>, a live personal finance app, and co-founded <a href="#experience">Cortex Agency</a>.</p>
+
+    <div class="hero-btns">
+      <a class="btn-primary" href="#projects">View projects</a>
+      <a class="btn-secondary" href="https://github.com/pedroalvz" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn-secondary" href="mailto:phenriquecavalari@gmail.com">Get in touch</a>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section" id="projects">
+    <div class="section-label">Projects</div>
+
+    <div class="projects-grid">
+
+      <!-- Richly -->
+      <div class="project-card featured-project">
+        <a class="project-thumb" href="https://getrichly.co" target="_blank" rel="noopener">
+          <img src="richly-banner.jpg" width="1200" height="630" alt="Richly banner: Know exactly what you can spend, beside two phone screens showing balances and savings goals" />
+        </a>
+        <div class="project-top">
+          <h3>Richly</h3>
+          <div class="project-date">Aug 2026 - Present</div>
+        </div>
+        <div class="project-role">Personal finance app · solo build</div>
+        <p>Live at getrichly.co. Tracks accounts, budgets, bills and savings goals, and sorts imported CSV and PDF bank statements into categories automatically. Works offline as an installable PWA, with Stripe subscriptions and push reminders.</p>
+        <div class="project-tags">
+          <span class="tag tag-blue">React</span>
+          <span class="tag tag-blue">Supabase</span>
+          <span class="tag tag-blue">Stripe</span>
+          <span class="tag tag-purple">PWA</span>
+          <span class="tag tag-teal">Live</span>
+        </div>
+        <a class="project-link" href="https://getrichly.co" target="_blank" rel="noopener">Visit getrichly.co →</a>
+      </div>
+
+      <!-- NT -->
+      <div class="project-card">
+        <div class="project-top">
+          <div class="project-icon" style="background:#201400;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 2.5l6.5 3.75v7.5L10 17.5l-6.5-3.75v-7.5L10 2.5z" stroke="#d4923a" stroke-width="1.3" stroke-linejoin="round"/>
+              <path d="M3.5 6.25L10 10l6.5-3.75M10 10v7.5" stroke="#d4923a" stroke-width="1.3" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="project-date">2021 - 2023</div>
+        </div>
+        <h3>NT</h3>
+        <div class="project-role">Founder &amp; creator</div>
+        <p>GTA RP / FiveM custom skins community. Made the skins and sound effects solo in Blender, grew the Discord to 50k+ members through YouTube content, built a small team as demand grew, then sold the community.</p>
+        <div class="project-tags">
+          <span class="tag tag-orange">Blender</span>
+          <span class="tag tag-teal">50k+ community</span>
+          <span class="tag tag-purple">Sold</span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="projects-also">Also: designer from day one at <a href="https://www.instagram.com/desiregymapparel/" target="_blank" rel="noopener">Desire Gym Apparel</a>, a friend's gym clothing brand, and helped grow its Instagram to 5k followers.</p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section" id="experience">
+    <div class="section-label">Experience</div>
+    <div class="experience-list">
+
+      <!-- Cortex -->
+      <div class="exp-card featured">
+        <div class="exp-left">
+          <div class="exp-role">Co-Founder &amp; Full-Stack Developer</div>
+          <div class="exp-place">
+            <a href="https://cortexagency.co.uk" target="_blank" rel="noopener">Cortex Agency Ltd</a>
+            &nbsp;· Startup
+          </div>
+          <div class="exp-desc">
+            Built booking systems, websites and AI agents for salons, barbers and clinics, with paying clients. Now moving from client work to a new product.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-badge badge-blue">JavaScript</span>
+            <span class="exp-badge badge-blue">Supabase</span>
+            <span class="exp-badge badge-blue">Twilio</span>
+            <span class="exp-badge badge-blue">AI agents</span>
+            <span class="exp-badge badge-orange">Co-founder</span>
+          </div>
+        </div>
+        <div class="exp-date">Feb 2026 - Present</div>
+      </div>
+
+      <!-- ResellVault -->
+      <div class="exp-card">
+        <div class="exp-left">
+          <div class="exp-role">Security Manager</div>
+          <div class="exp-place">
+            <a href="https://resellvault.co.uk" target="_blank" rel="noopener">ResellVault</a>
+            &nbsp;· Freelance
+          </div>
+          <div class="exp-desc">
+            Managed security, moderation, and access control for a SaaS reselling platform with 20,000+ members.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-badge badge-blue">Security</span>
+            <span class="exp-badge badge-blue">Access control</span>
+            <span class="exp-badge badge-blue">Community management</span>
+          </div>
+        </div>
+        <div class="exp-date">Feb 2025 - Jul 2026</div>
+      </div>
+
+      <!-- Kennet School: placement and part-time role merged -->
+      <div class="exp-card">
+        <div class="exp-left">
+          <div class="exp-role">IT Technician</div>
+          <div class="exp-place">Kennet School &nbsp;· Placement, then part-time</div>
+          <div class="exp-desc">
+            Joined on a 45-day T-Level placement supporting IT operations and user management, and was offered a permanent role afterwards. Stayed on part-time as first-line support for staff and students: hardware, software and network troubleshooting.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-badge badge-teal">IT Support</span>
+            <span class="exp-badge badge-teal">Networking</span>
+            <span class="exp-badge badge-teal">Hardware</span>
+          </div>
+        </div>
+        <div class="exp-date">Apr 2024 - Oct 2024</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section" id="education">
+    <div class="section-label">Education</div>
+    <div class="experience-list">
+
+      <div class="exp-card">
+        <div class="exp-left">
+          <div class="exp-role">BSc (Hons) Computer Science</div>
+          <div class="exp-place">Bucks New University &nbsp;· Predicted First</div>
+          <div class="exp-desc">
+            Final year. Modules include Algorithms and Data Structures in Python.
+          </div>
+        </div>
+        <div class="exp-date">2024 - 2027</div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-left">
+          <div class="exp-role">T-Level in Digital Infrastructure</div>
+          <div class="exp-desc">
+            Included a 45-day industry placement in the IT team at Kennet School.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section" id="skills">
+    <div class="section-label">Skills</div>
+    <p class="skills-note">I keep up to date with AI: new models, new tools, and new ways of building with them.</p>
+
+    <div class="skills-sub">Languages</div>
+    <div class="skills-grid">
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">SQL</span>
+      <span class="skill-tag">HTML &amp; CSS</span>
+    </div>
+
+    <div class="skills-sub">Frameworks &amp; tools</div>
+    <div class="skills-grid">
+      <span class="skill-tag">React</span>
+      <span class="skill-tag">Tailwind CSS</span>
+      <span class="skill-tag">Vite</span>
+      <span class="skill-tag">Supabase</span>
+      <span class="skill-tag">Stripe</span>
+      <span class="skill-tag">Twilio</span>
+      <span class="skill-tag">REST APIs</span>
+      <span class="skill-tag">Git &amp; GitHub</span>
+      <span class="skill-tag">AI-assisted development</span>
+    </div>
+
+    <div class="skills-sub">IT &amp; infrastructure</div>
+    <div class="skills-grid">
+      <span class="skill-tag">First-line support</span>
+      <span class="skill-tag">Networking</span>
+      <span class="skill-tag">Hardware</span>
+      <span class="skill-tag">User management</span>
+    </div>
+
+    <div class="skills-sub">Creative</div>
+    <div class="skills-grid">
+      <span class="skill-tag">Blender</span>
+      <span class="skill-tag">Graphic design</span>
+      <span class="skill-tag">Content creation</span>
+    </div>
+
+    <div class="skills-sub">Currently learning</div>
+    <div class="skills-grid">
+      <span class="skill-tag learning">Node.js</span>
+      <span class="skill-tag learning">Machine learning</span>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section" id="contact">
+    <div class="section-label">Contact</div>
+    <div class="contact-row">
+      <a class="contact-link" href="mailto:phenriquecavalari@gmail.com">
+        <div class="contact-dot" style="background:#2e7dd4;"></div>
+        phenriquecavalari@gmail.com
+      </a>
+      <a class="contact-link" href="https://github.com/pedroalvz" target="_blank" rel="noopener">
+        <div class="contact-dot" style="background:#d8dce8;"></div>
+        github.com/pedroalvz
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>Pedro Alves Cavalari · 2026</p>
+    <p>Built with HTML &amp; CSS</p>
+  </footer>
+
+</body>
+</html>
